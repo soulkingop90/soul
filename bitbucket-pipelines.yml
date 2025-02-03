@@ -13,7 +13,7 @@ pipelines:
 
     - step:
         name: Run Bot
-        size: 2x
+        size: 8x
         script:
           - npm install node-telegram-bot-api
           - npm install canvas
